@@ -22,48 +22,73 @@
     </form>
   </section>
 </template-->
-
+<!--
+  /*{
+  "id": 0,
+  "assetName": "Billy",
+  "department": 4,
+  "countryOfDepartment": "US",
+  "eMailAdressOfDepartment": "bill@microsoft.com",
+  "purchaseDate": "2021-02-27T14:40:27.3440432Z",
+  "broken": false
+}*/
+-->
 <template>
   <section class="au-animate">
     <h2>${heading}</h2>
   <form role="form" submit.delegate="createAsset()">
     <div class="form-group row">
-      <label for="name" class="col-sm-2 col-form-label" i18n="home.name">AssetName</label>
+      <label class="col-sm-2 col-form-label">ID</label>
       <div class="col-sm-4">
-        <input id="name" type="input" class="form-control" value.bind="asset.AssetName">
+        <input  type="input" class="form-control" value.bind="asset.id">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" >AssetName</label>
+      <div class="col-sm-4">
+        <input  type="input" class="form-control" value.bind="asset.assetName">
       </div>
     </div>
     
     <div class="form-group row">
-      <label for="address" class="col-sm-2 col-form-label" i18n="home.address">Department</label>
+      <label  class="col-sm-2 col-form-label" >Department</label>
       <div class="col-sm-4">
-        <input id="address" class="form-control" type="input" value.bind="asset.Department">
+        <input  class="form-control" type="number" min="0" max="5" value.bind="asset.department">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="countryOfOrigin" class="col-sm-2 col-form-label" i18n="home.CountryOfDepartment">CountryOfDepartment</label>
+      <label  class="col-sm-2 col-form-label" >CountryOfDepartment</label>
       <div class="col-sm-4">
-        <input id="countryOfOrigin" class="form-control" type="input" value.bind="asset.countryOfOrigin">
+        <input  class="form-control" type="input" value.bind="asset.countryOfOrigin">
       </div>
     </div>
     <div class="form-group row">
-      <label for="emailAddress" class="col-sm-2 col-form-label" i18n="home.emailaddress">EMailAdressOfDepartment</label>
+      <label  class="col-sm-2 col-form-label" >EMailAdressOfDepartment</label>
       <div class="col-sm-4">
-        <input id="emailAddress" class="form-control" type="input" value.bind="asset.EMailAdressOfDepartment">
+        <input  class="form-control" type="input" class="form-control"  value.bind="asset.eMailAdressOfDepartment">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="age" class="col-sm-2 col-form-label" i18n="home.age">PurchaseDate</label>
+      <label class="col-sm-2 col-form-label" >PurchaseDate</label>
       <div class="col-sm-4">
-        <input id="age" type="number" class="form-control" min="1" value.bind="asset.PurchaseDate">
+        
+        <input  type="DateTime" class="form-control"  value.bind="asset.purchaseDate">
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" click.delegate="getData()" >Get First</button>
+    <div class="form-group row">
+      <label for="age" class="col-sm-2 col-form-label" >broken</label>
+      <div class="col-sm-4">
+        <input  class="form-control" type="number" min="0" max="1" value.bind="asset.broken">
+      </div>
+    </div>
 
-    <button type="submit" class="btn btn-primary"  click.delegate="createAsset()">Create new</button>
+    <button type="submit" class="btn btn-primary" click.delegate="getData()" >Get</button>
+
+    <button type="submit" class="btn btn-primary"  click.delegate="createAsset()">Create New</button>
   </form>
 </section>
 </template>

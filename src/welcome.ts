@@ -16,11 +16,25 @@ export class Welcome
 {
   assetService:AssetService;
   
+  /*{
+  "id": 0,
+  "assetName": "Billy",
+  "department": 4,
+  "countryOfDepartment": "US",
+  "eMailAdressOfDepartment": "bill@microsoft.com",
+  "purchaseDate": "2021-02-27T14:40:27.3440432Z",
+  "broken": false
+}*/
+
   asset: AssetData = <AssetData>
   {
-    AssetName : 'test1',
-    CountryOfDepartment : 'DE',
-    EMailAdressOfDepartment : 'test@test.com'
+    id:0,
+    assetName: 'Billy',
+    department: 4,
+    countryOfDepartment: 'US',
+    eMailAdressOfDepartment: 'bill@microsoft.com',
+    broken: false,
+    purchaseDate: new Date,
   };
   result:string;  
 
@@ -34,11 +48,17 @@ export class Welcome
   setup(data)
   {
     this.asset = data;
-    alert(json(data).toString());
+    //alert(json(data).toString());
   }
   getData() 
   {
-    httpClient.fetch('https://localhost:44377/February2021Api/1').then(response => {
+    //alert(this.asset.id);
+    this.assetService.getAsset(this.asset.id).then(response=>
+      {
+        this.setup(response);
+        console.log("test:"+response);
+      });
+    /*httpClient.fetch('https://localhost:44377/February2021Api/1').then(response => {
       if (response.ok && response.status === 200) 
       {
         console.log(response);
@@ -49,7 +69,7 @@ export class Welcome
           });
       }
       return Promise.reject(response.text());
-     });
+     });*/
 
   }
 
@@ -59,7 +79,11 @@ export class Welcome
     //alert(`Welcome, ${json}!`);
     //alert(`Welcome, ${this.asset.AssetName}!`);
     //this.asset.ID = 0;
+    
+    this.asset.purchaseDate = (new Date());
+    console.log("createAsset"+json(this.asset).toString());
     this.assetService.addAsset(this.asset);
+    
   }
   
 }

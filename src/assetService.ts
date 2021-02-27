@@ -1,5 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import { setupMaster } from 'cluster';
 
 @inject(HttpClient)
 
@@ -33,8 +34,8 @@ export class AssetService
         .then(response => response.json())
         .then(asset => 
         {
-          console.log(asset);
-          // return card;
+          //console.log(asset);
+          return asset;
         });
     }
 
@@ -44,7 +45,11 @@ export class AssetService
         {
           method: 'POST',
           body: json(asset)
-        });
+        }).then(response =>
+          {
+            console.log(response);
+            return response;
+          });
     }
 }
 
