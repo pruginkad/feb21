@@ -29,7 +29,7 @@ export class Welcome
   asset: AssetData = <AssetData>
   {
     id:0,
-    assetName: 'Billy',
+    assetName: 'Billy Idol',
     department: 4,
     countryOfDepartment: 'US',
     eMailAdressOfDepartment: 'bill@microsoft.com',
@@ -39,7 +39,7 @@ export class Welcome
   result:string;  
 
 
-  public heading = 'Welcome to Hann Asset App!';
+  public heading = 'Welcome to Hann Asset Form';
     
   constructor(_AssetService) 
   {
